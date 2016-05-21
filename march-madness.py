@@ -1,5 +1,6 @@
 import csv
 import random
+import sys
 
 TOURNAMENT = ['Midwest',
               'West',
@@ -215,12 +216,16 @@ def ImportData(csv_path):
 
 
 def main():
+  if len(sys.argv) != 2:
+    print 'usage: python march-madness.py /path/to/file.csv'
+    
+  csv_path_to_data = sys.argv[1]
   semi_final_lineup = []
   final_lineup = []
   tournament_index = 0
 
   # Import team names, odds, and lineup.
-  lineups = ImportData(CSV_PATH_TO_DATA)
+  lineups = ImportData(csv_path_to_data)
 
   # Start indicator
   print '\n\n-----------------------------------------------------------'
